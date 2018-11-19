@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+//import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import Header from '../components/Header'
+import Card from '../components/Card'
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 
 export default class App extends Component {
   state = {
@@ -14,7 +23,21 @@ export default class App extends Component {
   }
 
   render() {
-    return <div>Hello App</div>
+    return (
+      <Wrapper>
+        <Header text="STEMfluence" />
+        <Card
+          imgURL={'https://source.unsplash.com/random'}
+          hashtag={'#Campaign Hashtag'}
+          productName={'productName'}
+          campaignStatus={'campaignStatus'}
+          hasTwitter={true}
+          hasInstagram={true}
+          hasYoutube={true}
+          isBookmarked={false}
+        />
+      </Wrapper>
+    )
     // <Router>
     //   <Wrapper>
     //     <Route

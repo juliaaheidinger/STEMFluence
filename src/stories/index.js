@@ -4,9 +4,14 @@ import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 import { text, boolean, number } from '@storybook/addon-knobs'
 
+import Header from '../components/Header'
 import Card from '../components/Card'
 
 //import StyleBox from './StyleBox'
+
+storiesOf('Header', module).add('default', () => (
+  <Header text={text('Headline', 'STEMfluence')} />
+))
 
 storiesOf('Card', module).add('default', () => (
   <Card
@@ -17,10 +22,9 @@ storiesOf('Card', module).add('default', () => (
     hasTwitter={boolean('TwitterEnabled', true)}
     hasInstagram={boolean('InstaEnabled', true)}
     hasYoutube={boolean('YoutubeEnabled', true)}
-    isBookmarked={boolean('BookmarkEnabled', true)}
+    isBookmarked={boolean('BookmarkEnabled', false)}
   />
 ))
-
 // storiesOf('ProgressBar', module)
 //   .add('at 10%', () => <ProgressBar width={0.1} />)
 //   .add('at 50%', () => <ProgressBar width={0.5} />)
