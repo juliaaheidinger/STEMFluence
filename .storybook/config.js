@@ -82,13 +82,13 @@ addDecorator(
      * enable/disable shortcuts
      * @type {Boolean}
      */
-    enableShortcuts: true, // true by default
+    enableShortcuts: true // true by default
   })
 )
 
 addDecorator(story => (
   <StyleBox
-    p="20px 25%"
+    p="20px 20px"
     m="0 0 20px 0"
     bg="repeating-linear-gradient(-45deg, #efefef, #efefef 1px, white 1px, white 8px)"
   >
