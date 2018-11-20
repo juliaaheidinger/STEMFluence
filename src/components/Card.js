@@ -4,11 +4,8 @@ import twitterIcon from '../images/twitter_icon.png'
 import InstagramIcon from '../images/instagram_icon.png'
 import youtubeIcon from '../images/youtube_icon.png'
 import arrowDown from '../images/arrow-down.png'
-import bookmarkEmpty from '../images/Bookmark_empty.svg'
-import bookmarkFilled from '../images/Bookmark_Filled.png'
 
 const Wrapper = styled.section`
-  position: relative;
   width: 80%;
   min-height: 150px;
   background: #fff;
@@ -24,30 +21,27 @@ const Wrapper = styled.section`
 `
 const CampaignInfo = styled.div`
   position: relative;
-  display: grid;
-  grid-template-columns: auto auto;
-  padding: 0 15px 15px;
+  padding: 0 15px 30px;
+
+  h2 {
+    word-wrap: break-word;
+  }
 `
 
-const Bookmark = styled.div`
-  /* background-image: url(${bookmarkEmpty}); */
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  top: -4%;
-  right: 3%;
-  img {
-    height: 30px;
-    width: 30px;
-    object-fit: cover;
+const StatusAndSocial = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  p {
+    margin: 0;
   }
 `
 
 const SocialIcons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 20px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 3px;
 
   img {
     height: 20px;
@@ -81,25 +75,20 @@ export default class Card extends React.Component {
       <Wrapper>
         <img src={this.props.imgURL} alt="" />
         <CampaignInfo>
-          <Bookmark>
-            {this.props.isBookmarked ? (
-              <img src={bookmarkFilled} alt="bookmark filled" />
-            ) : (
-              <img src={bookmarkEmpty} alt="bookmark Empty" />
-            )}
-          </Bookmark>
           <div>
             <h2>{this.props.hashtag}</h2>
             <p>{this.props.productName}</p>
-            <p>{this.props.campaignStatus}</p>
           </div>
-          <SocialIcons>
-            {this.props.hasTwitter && <img src={twitterIcon} alt="Twitter" />}
-            {this.props.hasInstagram && (
-              <img src={InstagramIcon} alt="Instagram" />
-            )}
-            {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
-          </SocialIcons>
+          <StatusAndSocial>
+            <p>{this.props.campaignStatus}</p>
+            <SocialIcons>
+              {this.props.hasTwitter && <img src={twitterIcon} alt="Twitter" />}
+              {this.props.hasInstagram && (
+                <img src={InstagramIcon} alt="Instagram" />
+              )}
+              {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
+            </SocialIcons>
+          </StatusAndSocial>
         </CampaignInfo>
         <ToggleBtn>
           <img src={arrowDown} alt="arrow-down" />

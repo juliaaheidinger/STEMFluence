@@ -18,13 +18,12 @@ export default class App extends Component {
         <Header text="STEMfluence" />
         <Card
           imgURL="https://source.unsplash.com/random"
-          hashtag="#Campaign Hashtag"
-          productName="productName"
-          campaignStatus="campaignStatus"
+          hashtag="#BecomeADeveloper"
+          productName="neuefische Bootcamp"
+          campaignStatus="Bewerbungsphase"
           hasTwitter={true}
           hasInstagram={true}
           hasYoutube={true}
-          isBookmarked={false}
         />
       </Wrapper>
     )
