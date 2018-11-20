@@ -97,7 +97,7 @@ export default class Card extends React.Component {
         <img src={this.props.imgURL} alt="" />
         <CampaignInfo>
           <div>
-            <h2>{this.props.hashtag}</h2>
+            <h2>{this.props.headline}</h2>
             <p>{this.props.productName}</p>
           </div>
           <StatusAndSocial>
