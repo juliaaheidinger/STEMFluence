@@ -12,25 +12,15 @@ const Wrapper = styled.div`
 `
 
 export default class App extends Component {
-  state = {
-    showDoneTodos: true
-  }
-
-  toggleShowDoneTodos = () => {
-    this.setState({
-      showDoneTodos: !this.state.showDoneTodos
-    })
-  }
-
   render() {
     return (
       <Wrapper>
         <Header text="STEMfluence" />
         <Card
-          imgURL={'https://source.unsplash.com/random'}
-          hashtag={'#Campaign Hashtag'}
-          productName={'productName'}
-          campaignStatus={'campaignStatus'}
+          imgURL="https://source.unsplash.com/random"
+          hashtag="#Campaign Hashtag"
+          productName="productName"
+          campaignStatus="campaignStatus"
           hasTwitter={true}
           hasInstagram={true}
           hasYoutube={true}

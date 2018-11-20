@@ -43,8 +43,6 @@ const Bookmark = styled.div`
   }
 `
 
-const Text = styled.div``
-
 const SocialIcons = styled.div`
   display: flex;
   justify-content: space-between;
@@ -57,7 +55,7 @@ const SocialIcons = styled.div`
     object-fit: cover;
   }
 `
-const Togglebtn = styled.div`
+const ToggleBtn = styled.div`
   position: absolute;
   width: 30px;
   height: 30px;
@@ -90,11 +88,11 @@ export default class Card extends React.Component {
               <img src={bookmarkEmpty} alt="bookmark Empty" />
             )}
           </Bookmark>
-          <Text>
+          <div>
             <h2>{this.props.hashtag}</h2>
             <p>{this.props.productName}</p>
             <p>{this.props.campaignStatus}</p>
-          </Text>
+          </div>
           <SocialIcons>
             {this.props.hasTwitter && <img src={twitterIcon} alt="Twitter" />}
             {this.props.hasInstagram && (
@@ -103,9 +101,9 @@ export default class Card extends React.Component {
             {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
           </SocialIcons>
         </CampaignInfo>
-        <Togglebtn>
-          <img src={arrowDown} alt="Twitter" />
-        </Togglebtn>
+        <ToggleBtn>
+          <img src={arrowDown} alt="arrow-down" />
+        </ToggleBtn>
       </Wrapper>
     )
   }
