@@ -5,10 +5,11 @@ import Header from '../components/Header'
 import Card from '../components/Card'
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 30px;
+  grid-gap: 30px;
+  margin-top: 30px;
 `
 
 export default class App extends Component {
@@ -20,7 +21,16 @@ export default class App extends Component {
           imgURL="https://source.unsplash.com/random"
           hashtag="#BecomeADeveloper"
           productName="neuefische Bootcamp"
-          campaignStatus="Bewerbungsphase"
+          campaignStatus="Application Phase"
+          hasTwitter={true}
+          hasInstagram={true}
+          hasYoutube={true}
+        />
+        <Card
+          imgURL="https://source.unsplash.com/random"
+          hashtag="#BecomeADeveloper"
+          productName="neuefische Bootcamp"
+          campaignStatus="Application Phase"
           hasTwitter={true}
           hasInstagram={true}
           hasYoutube={true}

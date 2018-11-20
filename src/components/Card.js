@@ -4,8 +4,10 @@ import twitterIcon from '../images/twitter_icon.png'
 import InstagramIcon from '../images/instagram_icon.png'
 import youtubeIcon from '../images/youtube_icon.png'
 import arrowDown from '../images/arrow-down.png'
+import CampaignDetails from './CampaignDetails'
 
 const Wrapper = styled.section`
+  position: relative;
   width: 80%;
   min-height: 150px;
   background: #fff;
@@ -25,6 +27,10 @@ const CampaignInfo = styled.div`
 
   h2 {
     word-wrap: break-word;
+    margin: 15px 0;
+  }
+  p {
+    margin: 0;
   }
 `
 
@@ -53,7 +59,7 @@ const ToggleBtn = styled.div`
   position: absolute;
   width: 30px;
   height: 30px;
-  top: 93%;
+  bottom: -15px;
   right: calc(50% - 15px);
   border-radius: 50%;
   box-shadow: 0 8px 16px rgba(0, 40, 100, 0.4);
@@ -66,10 +72,25 @@ const ToggleBtn = styled.div`
     height: 20px;
     width: 20px;
     object-fit: cover;
+    transition: all 0.5s ease;
+
+    &.upside-down {
+      transform: rotate(180deg);
+    }
   }
 `
 
 export default class Card extends React.Component {
+  state = {
+    showDetails: false
+  }
+
+  toggleDetails = () => {
+    this.setState({
+      showDetails: !this.state.showDetails
+    })
+  }
+
   render() {
     return (
       <Wrapper>
@@ -80,7 +101,7 @@ export default class Card extends React.Component {
             <p>{this.props.productName}</p>
           </div>
           <StatusAndSocial>
-            <p>{this.props.campaignStatus}</p>
+            <p>Status: {this.props.campaignStatus}</p>
             <SocialIcons>
               {this.props.hasTwitter && <img src={twitterIcon} alt="Twitter" />}
               {this.props.hasInstagram && (
@@ -89,9 +110,14 @@ export default class Card extends React.Component {
               {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
             </SocialIcons>
           </StatusAndSocial>
+          <CampaignDetails showMe={this.state.showDetails} />
         </CampaignInfo>
-        <ToggleBtn>
-          <img src={arrowDown} alt="arrow-down" />
+        <ToggleBtn onClick={this.toggleDetails}>
+          <img
+            src={arrowDown}
+            alt="arrow-down"
+            className={this.state.showDetails ? 'upside-down' : null}
+          />
         </ToggleBtn>
       </Wrapper>
     )
