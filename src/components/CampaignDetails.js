@@ -40,7 +40,7 @@ export default class CampaignDetails extends React.Component {
         <h3>Briefing</h3>
         <p>
           Timing: {postingPeriod} <br />
-          {amountPosts} Post {amountStories} Stories <br />
+          {amountPosts} Posts {amountStories} Stories <br />
           {tags} <br />
           {hashtags}
         </p>

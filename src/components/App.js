@@ -19,7 +19,7 @@ export default class App extends Component {
     teaserData: campaignData
   }
 
-  createCard() {
+  createCards() {
     return this.state.teaserData.map(this.renderSingleCard)
   }
 
@@ -54,7 +54,7 @@ export default class App extends Component {
     return (
       <Wrapper>
         <Header text="STEMfluence" />
-        {this.createCard()}
+        {this.createCards()}
       </Wrapper>
     )
     // <Router>
