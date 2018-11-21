@@ -1,0 +1,47 @@
+[
+  {
+    "imgURL": "https://source.unsplash.com/random",
+    "headline": "#BecomeACoder",
+    "productName": "Web Development Bootcamp",
+    "campaignStatus": "Application Phase",
+    "hasTwitter": true,
+    "hasInstagram": true,
+    "hasYoutube": true,
+    "productDescription": "Lerne alles was du brauchst, um als Entwickler in den Teams der modernsten Digitalunternehmen arbeiten zu können.",
+    "postingPeriod": "01 Dez 2018 - 15 Jan 2019",
+    "amountPosts": 1,
+    "amountStories": 2,
+    "tags": ["@neuefische", "@coyo"],
+    "hashtags": ["#neuefische", "#bootcamp", "ad"]
+  },
+  {
+    "imgURL": "https://source.unsplash.com/random",
+    "headline": "#NeverStopLerning",
+    "productName": "Google Zukunkftswerkstatt",
+    "campaignStatus": "Application Phase",
+    "hasTwitter": false,
+    "hasInstagram": true,
+    "hasYoutube": true,
+    "productDescription": "Bei Workshops der Google Zukunftswerkstatt kannst du direkt bei dir in der Nähe digitale Kompetenzen erwerben.",
+    "postingPeriod": "15 Jan 2019 - 15 Feb 2019",
+    "amountPosts": 2,
+    "amountStories": 5,
+    "tags": ["@google"],
+    "hashtags": ["#growWithGoogle", "#zukunftswerkstatt", "#ad"]
+  },
+  {
+    "imgURL": "https://source.unsplash.com/random",
+    "headline": "#WieNieZuvor",
+    "productName": "Amazon Launchpad",
+    "campaignStatus": "Posting Phase",
+    "hasTwitter": true,
+    "hasInstagram": true,
+    "hasYoutube": false,
+    "productDescription": "Amazon Launchpad ist eine Mischung aus Startrampe und Raketentriebwerk für Startups. Der Launchpad-Store ist der Endkunden-Bereich im Amazon-Onlineshop speziell für Startup-Produkte.",
+    "postingPeriod": "15 Jan 2019 - 15 Feb 2019",
+    "amountPosts": 3,
+    "amountStories": 6,
+    "tags": ["@amazonlaunchpad"],
+    "hashtags": ["#amazon", "#wieNieZuvor", "#ad"]
+  }
+]

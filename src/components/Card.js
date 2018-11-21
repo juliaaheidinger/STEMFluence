@@ -4,8 +4,7 @@ import twitterIcon from '../images/twitter_icon.png'
 import InstagramIcon from '../images/instagram_icon.png'
 import youtubeIcon from '../images/youtube_icon.png'
 import arrowDown from '../images/arrow-down.png'
-import bookmarkEmpty from '../images/Bookmark_empty.svg'
-import bookmarkFilled from '../images/Bookmark_Filled.png'
+import CampaignDetails from './CampaignDetails'
 
 const Wrapper = styled.section`
   position: relative;
@@ -24,30 +23,31 @@ const Wrapper = styled.section`
 `
 const CampaignInfo = styled.div`
   position: relative;
-  display: grid;
-  grid-template-columns: auto auto;
-  padding: 0 15px 15px;
+  padding: 0 15px 30px;
+
+  h2 {
+    word-wrap: break-word;
+    margin: 15px 0;
+  }
+  p {
+    margin: 0;
+  }
 `
 
-const Bookmark = styled.div`
-  /* background-image: url(${bookmarkEmpty}); */
-  position: absolute;
-  width: 30px;
-  height: 30px;
-  top: -4%;
-  right: 3%;
-  img {
-    height: 30px;
-    width: 30px;
-    object-fit: cover;
+const StatusAndSocial = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  p {
+    margin: 0;
   }
 `
 
 const SocialIcons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 20px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 3px;
 
   img {
     height: 20px;
@@ -59,7 +59,7 @@ const ToggleBtn = styled.div`
   position: absolute;
   width: 30px;
   height: 30px;
-  top: 93%;
+  bottom: -15px;
   right: calc(50% - 15px);
   border-radius: 50%;
   box-shadow: 0 8px 16px rgba(0, 40, 100, 0.4);
@@ -72,37 +72,76 @@ const ToggleBtn = styled.div`
     height: 20px;
     width: 20px;
     object-fit: cover;
+    transition: all 0.5s ease;
+
+    &.upside-down {
+      transform: rotate(180deg);
+    }
   }
 `
 
 export default class Card extends React.Component {
+  state = {
+    showDetails: false
+  }
+
+  toggleDetails = () => {
+    this.setState({
+      showDetails: !this.state.showDetails
+    })
+  }
+
   render() {
+    const {
+      imgURL,
+      headline,
+      productName,
+      campaignStatus,
+      hasTwitter,
+      hasInstagram,
+      hasYoutube,
+      rest
+    } = this.props
+    const {
+      productDescription,
+      postingPeriod,
+      amountPosts,
+      amountStories,
+      tags,
+      hashtags
+    } = rest
     return (
       <Wrapper>
-        <img src={this.props.imgURL} alt="" />
+        <img src={imgURL} alt="" />
         <CampaignInfo>
-          <Bookmark>
-            {this.props.isBookmarked ? (
-              <img src={bookmarkFilled} alt="bookmark filled" />
-            ) : (
-              <img src={bookmarkEmpty} alt="bookmark Empty" />
-            )}
-          </Bookmark>
           <div>
-            <h2>{this.props.hashtag}</h2>
-            <p>{this.props.productName}</p>
-            <p>{this.props.campaignStatus}</p>
+            <h2>{headline}</h2>
+            <p>{productName}</p>
           </div>
-          <SocialIcons>
-            {this.props.hasTwitter && <img src={twitterIcon} alt="Twitter" />}
-            {this.props.hasInstagram && (
-              <img src={InstagramIcon} alt="Instagram" />
-            )}
-            {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
-          </SocialIcons>
+          <StatusAndSocial>
+            <p>Status: {campaignStatus}</p>
+            <SocialIcons>
+              {hasTwitter && <img src={twitterIcon} alt="Twitter" />}
+              {hasInstagram && <img src={InstagramIcon} alt="Instagram" />}
+              {hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
+            </SocialIcons>
+          </StatusAndSocial>
+          <CampaignDetails
+            showMe={this.state.showDetails}
+            productDescription={productDescription}
+            postingPeriod={postingPeriod}
+            amountPosts={amountPosts}
+            amountStories={amountStories}
+            tags={tags}
+            hashtags={hashtags}
+          />
         </CampaignInfo>
-        <ToggleBtn>
-          <img src={arrowDown} alt="arrow-down" />
+        <ToggleBtn onClick={this.toggleDetails}>
+          <img
+            src={arrowDown}
+            alt="arrow-down"
+            className={this.state.showDetails ? 'upside-down' : null}
+          />
         </ToggleBtn>
       </Wrapper>
     )

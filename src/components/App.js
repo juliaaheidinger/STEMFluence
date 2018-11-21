@@ -3,29 +3,58 @@ import styled from 'styled-components'
 //import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
+import campaignData from '../data/campaignData.json'
+import uid from 'uid'
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  justify-items: center;
+  grid-template-rows: 30px;
+  grid-gap: 30px;
+  margin-top: 30px;
 `
 
 export default class App extends Component {
+  state = {
+    teaserData: campaignData
+  }
+
+  createCard() {
+    return this.state.teaserData.map(this.renderSingleCard)
+  }
+
+  renderSingleCard = teaserInfo => {
+    const {
+      imgURL,
+      headline,
+      productName,
+      campaignStatus,
+      hasTwitter,
+      hasInstagram,
+      hasYoutube,
+      ...rest
+    } = teaserInfo
+
+    return (
+      <Card
+        key={uid()}
+        imgURL={imgURL}
+        headline={headline}
+        productName={productName}
+        campaignStatus={campaignStatus}
+        hasTwitter={hasTwitter}
+        hasInstagram={hasInstagram}
+        hasYoutube={hasYoutube}
+        rest={rest}
+      />
+    )
+  }
+
   render() {
     return (
       <Wrapper>
         <Header text="STEMfluence" />
-        <Card
-          imgURL="https://source.unsplash.com/random"
-          hashtag="#Campaign Hashtag"
-          productName="productName"
-          campaignStatus="campaignStatus"
-          hasTwitter={true}
-          hasInstagram={true}
-          hasYoutube={true}
-          isBookmarked={false}
-        />
+        {this.createCard()}
       </Wrapper>
     )
     // <Router>
