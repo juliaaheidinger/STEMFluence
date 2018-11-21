@@ -3,6 +3,7 @@ import styled from 'styled-components'
 //import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
+import CampaignDetails from './CampaignDetails'
 
 const Wrapper = styled.div`
   display: grid;
@@ -17,15 +18,6 @@ export default class App extends Component {
     return (
       <Wrapper>
         <Header text="STEMfluence" />
-        <Card
-          imgURL="https://source.unsplash.com/random"
-          headline="#BecomeADeveloper"
-          productName="neuefische Bootcamp"
-          campaignStatus="Application Phase"
-          hasTwitter={true}
-          hasInstagram={true}
-          hasYoutube={true}
-        />
         <Card
           imgURL="https://source.unsplash.com/random"
           headline="#BecomeADeveloper"

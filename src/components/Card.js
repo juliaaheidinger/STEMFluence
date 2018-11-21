@@ -110,7 +110,15 @@ export default class Card extends React.Component {
               {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
             </SocialIcons>
           </StatusAndSocial>
-          <CampaignDetails showMe={this.state.showDetails} />
+          <CampaignDetails
+            showMe={this.state.showDetails}
+            productDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eos delectus! Sint earum officia quasi. Eius minus id nobis perferendis temporibus distinctio, suscipit quod. Doloremque non ad iure eveniet quis?      "
+            postingPeriod="15 Jan 2019 - 30 Jan 2019"
+            amountPosts={1}
+            amountStories={2}
+            tags="@neuefische"
+            hashtags="#neuefische #bootcamp #ad"
+          />
         </CampaignInfo>
         <ToggleBtn onClick={this.toggleDetails}>
           <img

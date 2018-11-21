@@ -24,21 +24,25 @@ const Wrapper = styled.section`
 
 export default class CampaignDetails extends React.Component {
   render() {
+    const {
+      showMe,
+      productDescription,
+      postingPeriod,
+      amountPosts,
+      amountStories,
+      tags,
+      hashtags
+    } = this.props
     return (
-      <Wrapper className={this.props.showMe ? 'visible' : null}>
+      <Wrapper className={showMe ? 'visible' : null}>
         <h3>Product Description</h3>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-          dignissimos possimus! Unde voluptate, quibusdam hic deserunt
-          architecto ea sit distinctio ipsum debitis iste dolorum, possimus quo
-          dolorem, eaque quas mollitia.
-        </p>
+        <p>{productDescription}</p>
         <h3>Briefing</h3>
         <p>
-          Timing: 01.Jan - 15.Jan 2019 <br />
-          1 Post 2 Stories <br />
-          @neuefische <br />
-          #neuefische #bootcamp #ad #becomeADeveloper
+          Timing: {postingPeriod} <br />
+          {amountPosts} Post {amountStories} Stories <br />
+          {tags} <br />
+          {hashtags}
         </p>
       </Wrapper>
     )
