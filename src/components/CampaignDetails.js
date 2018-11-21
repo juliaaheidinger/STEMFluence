@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import ApplyBtn from './ApplyBtn'
 
 const Wrapper = styled.section`
   max-height: 0;
@@ -19,6 +20,12 @@ const Wrapper = styled.section`
     opacity: 1;
     max-height: 100vh;
     transition: all 1.5s ease;
+  }
+
+  div {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
   }
 `
 
@@ -44,6 +51,9 @@ export default class CampaignDetails extends React.Component {
           {tags} <br />
           {hashtags}
         </p>
+        <div>
+          <ApplyBtn text="Apply now" />
+        </div>
       </Wrapper>
     )
   }

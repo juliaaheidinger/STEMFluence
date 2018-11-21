@@ -6,6 +6,7 @@ import { text, boolean, number } from '@storybook/addon-knobs'
 
 import Header from '../components/Header'
 import Card from '../components/Card'
+import ApplyBtn from '../components/ApplyBtn'
 
 storiesOf('Header', module).add('default', () => (
   <Header text={text('Headline', 'STEMfluence')} />
@@ -22,6 +23,10 @@ storiesOf('Card', module).add('default', () => (
     hasYoutube={boolean('youtubeEnabled', true)}
     isBookmarked={boolean('bookmarkEnabled', false)}
   />
+))
+
+storiesOf('Button', module).add('hover', () => (
+  <ApplyBtn text={text('buttonText', 'Apply now')} />
 ))
 
 // storiesOf('Todo', module).add('undone', () => (
