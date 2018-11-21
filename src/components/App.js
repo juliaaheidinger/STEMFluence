@@ -3,7 +3,8 @@ import styled from 'styled-components'
 //import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
-import CampaignDetails from './CampaignDetails'
+import campaignData from '../data/campaignData.json'
+import uid from 'uid'
 
 const Wrapper = styled.div`
   display: grid;
@@ -14,19 +15,46 @@ const Wrapper = styled.div`
 `
 
 export default class App extends Component {
+  state = {
+    teaserData: campaignData
+  }
+
+  createCard() {
+    return this.state.teaserData.map(this.renderSingleCard)
+  }
+
+  renderSingleCard = teaserInfo => {
+    const {
+      imgURL,
+      headline,
+      productName,
+      campaignStatus,
+      hasTwitter,
+      hasInstagram,
+      hasYoutube,
+      ...rest
+    } = teaserInfo
+
+    return (
+      <Card
+        key={uid()}
+        imgURL={imgURL}
+        headline={headline}
+        productName={productName}
+        campaignStatus={campaignStatus}
+        hasTwitter={hasTwitter}
+        hasInstagram={hasInstagram}
+        hasYoutube={hasYoutube}
+        rest={rest}
+      />
+    )
+  }
+
   render() {
     return (
       <Wrapper>
         <Header text="STEMfluence" />
-        <Card
-          imgURL="https://source.unsplash.com/random"
-          headline="#BecomeADeveloper"
-          productName="neuefische Bootcamp"
-          campaignStatus="Application Phase"
-          hasTwitter={true}
-          hasInstagram={true}
-          hasYoutube={true}
-        />
+        {this.createCard()}
       </Wrapper>
     )
     // <Router>

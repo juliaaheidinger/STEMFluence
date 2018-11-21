@@ -92,32 +92,48 @@ export default class Card extends React.Component {
   }
 
   render() {
+    const {
+      imgURL,
+      headline,
+      productName,
+      campaignStatus,
+      hasTwitter,
+      hasInstagram,
+      hasYoutube,
+      rest
+    } = this.props
+    const {
+      productDescription,
+      postingPeriod,
+      amountPosts,
+      amountStories,
+      tags,
+      hashtags
+    } = rest
     return (
       <Wrapper>
-        <img src={this.props.imgURL} alt="" />
+        <img src={imgURL} alt="" />
         <CampaignInfo>
           <div>
-            <h2>{this.props.headline}</h2>
-            <p>{this.props.productName}</p>
+            <h2>{headline}</h2>
+            <p>{productName}</p>
           </div>
           <StatusAndSocial>
-            <p>Status: {this.props.campaignStatus}</p>
+            <p>Status: {campaignStatus}</p>
             <SocialIcons>
-              {this.props.hasTwitter && <img src={twitterIcon} alt="Twitter" />}
-              {this.props.hasInstagram && (
-                <img src={InstagramIcon} alt="Instagram" />
-              )}
-              {this.props.hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
+              {hasTwitter && <img src={twitterIcon} alt="Twitter" />}
+              {hasInstagram && <img src={InstagramIcon} alt="Instagram" />}
+              {hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
             </SocialIcons>
           </StatusAndSocial>
           <CampaignDetails
             showMe={this.state.showDetails}
-            productDescription="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, eos delectus! Sint earum officia quasi. Eius minus id nobis perferendis temporibus distinctio, suscipit quod. Doloremque non ad iure eveniet quis?      "
-            postingPeriod="15 Jan 2019 - 30 Jan 2019"
-            amountPosts={1}
-            amountStories={2}
-            tags="@neuefische"
-            hashtags="#neuefische #bootcamp #ad"
+            productDescription={productDescription}
+            postingPeriod={postingPeriod}
+            amountPosts={amountPosts}
+            amountStories={amountStories}
+            tags={tags}
+            hashtags={hashtags}
           />
         </CampaignInfo>
         <ToggleBtn onClick={this.toggleDetails}>
