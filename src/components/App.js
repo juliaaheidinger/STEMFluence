@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-//import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import campaignData from '../data/campaignData.json'
 import uid from 'uid'
+import ApplicationForm from './ApplicationForm'
 
 const Wrapper = styled.div`
   display: grid;
@@ -56,6 +57,19 @@ export default class App extends Component {
         <Header text="STEMfluence" />
         {this.createCards()}
       </Wrapper>
+      // <Router>
+      //   <Wrapper>
+      //     <Header text="STEMfluence" />
+      //     <Route
+      //       path="/"
+      //       exact
+      //       render={() => {
+      //         this.createCards()
+      //       }}
+      //     />
+      //     <Route path="/application" exact render={() => <ApplicationForm />} />
+      //   </Wrapper>
+      // </Router>
     )
     // <Router>
     //   <Wrapper>

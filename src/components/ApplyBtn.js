@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { BrowserRouter as Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,6 +44,11 @@ const Wrapper = styled.div`
 
 export default class ApplyBtn extends React.Component {
   render() {
-    return <Wrapper>{this.props.text}</Wrapper>
+    return (
+      <Wrapper>
+        {/* <Link to="/application">{this.props.text}</Link> */}
+        {this.props.text}
+      </Wrapper>
+    )
   }
 }
