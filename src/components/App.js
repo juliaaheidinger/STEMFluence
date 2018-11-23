@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import campaignData from '../data/campaignData.json'
@@ -53,11 +53,6 @@ export default class App extends Component {
 
   render() {
     return (
-      // <Wrapper>
-      //   <Header text="STEMfluence" />
-      //   {this.createCards()}
-      // </Wrapper>
-
       <Router>
         <Wrapper>
           <Header text="STEMfluence" />
