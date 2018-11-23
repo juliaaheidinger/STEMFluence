@@ -1,10 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
+//import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   max-width: 500px;
   width: 100%;
-  margin: 50px 10px;
+  margin: 0px 10px 50px;
   background: #fff;
   box-shadow: 0 8px 16px rgba(0, 40, 100, 0.4);
   border: px solid black;
@@ -67,7 +68,7 @@ const Wrapper = styled.div`
   h2 {
     font-size: 26px;
     color: black;
-    margin-bottom: 0;
+    margin: 0;
   }
 
   a {
@@ -138,11 +139,13 @@ export default class ApplicationForm extends React.Component {
               id="campaigns_application_accepted_terms"
             />
             <label className="AGB-label">
-              Die <a href="https://www.google.com">Influencer-AGB</a> und
-              <a href="https://www.google.com">Datenschutzerklärung</a> habe ich
-              zur Kenntnis genommen und bin mit deren Geltung einverstanden. Ich
-              bestätige, dass alle meine Angaben in dieser Registrierung korrekt
-              sind.
+              I have read the{' '}
+              <a href="https://www.google.com">
+                Influencer Terms and Conditions
+              </a>{' '}
+              and <a href="https://www.google.com">Privacy Policy</a> and agree
+              with their validity. I confirm that all my details in this
+              registration are correct.
             </label>
           </div>
           <button

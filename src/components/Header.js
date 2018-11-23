@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,6 +15,14 @@ const Wrapper = styled.div`
 `
 
 export default class Header extends React.Component {
+  static propTypes = {
+    text: PropTypes.string.isRequired
+  }
+
+  static defaultProps = {
+    text: 'STEMfluence'
+  }
+
   render() {
     return <Wrapper>{this.props.text}</Wrapper>
   }

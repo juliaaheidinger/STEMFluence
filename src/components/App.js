@@ -53,6 +53,11 @@ export default class App extends Component {
 
   render() {
     return (
+      // <Wrapper>
+      //   <Header text="STEMfluence" />
+      //   {this.createCards()}
+      // </Wrapper>
+
       <Router>
         <Wrapper>
           <Header text="STEMfluence" />

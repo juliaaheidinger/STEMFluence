@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BrowserRouter as Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.div`
   display: flex;
@@ -40,13 +41,28 @@ const Wrapper = styled.div`
     opacity: 1;
     left: 7px;
   }
+
+  .link {
+    color: black;
+    text-decoration: none;
+  }
 `
 
 export default class ApplyBtn extends React.Component {
+  static propTypes = {
+    text: PropTypes.string.isRequired
+  }
+
+  static defaultProps = {
+    text: 'Apply now'
+  }
+
   render() {
     return (
-      <Wrapper>
-        <Link to="/application">{this.props.text}</Link>
+      <Wrapper data-cy="ApplyBtn">
+        <Link className="link" to="/application">
+          {this.props.text}
+        </Link>
       </Wrapper>
     )
   }

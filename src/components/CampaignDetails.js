@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import ApplyBtn from './ApplyBtn'
+import PropTypes from 'prop-types'
 
 const Wrapper = styled.section`
   max-height: 0;
@@ -30,9 +31,23 @@ const Wrapper = styled.section`
 `
 
 export default class CampaignDetails extends React.Component {
+  static propTypes = {
+    showMe: PropTypes.func,
+    productDescription: PropTypes.string,
+    postingPeriod: PropTypes.any,
+    amountPosts: PropTypes.number,
+    amountStories: PropTypes.number,
+    tags: PropTypes.array,
+    hashtags: PropTypes.array
+  }
+
+  static defaultProps = {
+    hashtags: '#ad'
+  }
+
   render() {
     const {
-      showMe,
+      showDetails,
       productDescription,
       postingPeriod,
       amountPosts,
@@ -41,7 +56,7 @@ export default class CampaignDetails extends React.Component {
       hashtags
     } = this.props
     return (
-      <Wrapper className={showMe ? 'visible' : null}>
+      <Wrapper className={showDetails ? 'visible' : null}>
         <h3>Product Description</h3>
         <p>{productDescription}</p>
         <h3>Briefing</h3>
