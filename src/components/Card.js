@@ -6,6 +6,7 @@ import youtubeIcon from '../images/youtube_icon.png'
 import arrowDown from '../images/arrow-down.png'
 import CampaignDetails from './CampaignDetails'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.section`
   position: relative;
@@ -119,6 +120,7 @@ export default class Card extends React.Component {
       hasTwitter,
       hasInstagram,
       hasYoutube,
+      id,
       rest
     } = this.props
 
@@ -133,7 +135,9 @@ export default class Card extends React.Component {
 
     return (
       <Wrapper>
-        <img src={imgURL} alt="" />
+        <Link to={`/application/${id}`}>
+          <img src={imgURL} alt="" />
+        </Link>
         <CampaignInfo>
           <div>
             <h2>{headline}</h2>
@@ -148,6 +152,7 @@ export default class Card extends React.Component {
             </SocialIcons>
           </StatusAndSocial>
           <CampaignDetails
+            id={id}
             showDetails={this.state.showDetails}
             productDescription={productDescription}
             postingPeriod={postingPeriod}

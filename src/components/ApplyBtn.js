@@ -50,7 +50,8 @@ const Wrapper = styled.div`
 
 export default class ApplyBtn extends React.Component {
   static propTypes = {
-    text: PropTypes.string.isRequired
+    text: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired
   }
 
   static defaultProps = {
@@ -60,7 +61,7 @@ export default class ApplyBtn extends React.Component {
   render() {
     return (
       <Wrapper data-cy="ApplyBtn">
-        <Link className="link" to="/application">
+        <Link className="link" to={`/application/${this.props.id}`}>
           {this.props.text}
         </Link>
       </Wrapper>

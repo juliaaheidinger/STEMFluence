@@ -18,7 +18,6 @@ const Wrapper = styled.section`
   }
 
   &.visible {
-    opacity: 1;
     max-height: 100vh;
     transition: all 1.5s ease;
   }
@@ -53,7 +52,8 @@ export default class CampaignDetails extends React.Component {
       amountPosts,
       amountStories,
       tags,
-      hashtags
+      hashtags,
+      id
     } = this.props
     return (
       <Wrapper className={showDetails ? 'visible' : null}>
@@ -67,7 +67,7 @@ export default class CampaignDetails extends React.Component {
           {hashtags}
         </p>
         <div>
-          <ApplyBtn text="Apply now" />
+          <ApplyBtn id={id} text="Apply now" />
         </div>
       </Wrapper>
     )

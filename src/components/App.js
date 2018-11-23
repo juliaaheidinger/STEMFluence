@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 
 export default class App extends Component {
   state = {
-    teaserData: campaignData
+    teaserData: campaignData.map(d => ({ ...d, id: uid() }))
   }
 
   createCards() {
@@ -33,12 +33,14 @@ export default class App extends Component {
       hasTwitter,
       hasInstagram,
       hasYoutube,
+      id,
       ...rest
     } = teaserInfo
 
     return (
       <Card
-        key={uid()}
+        key={id}
+        id={id}
         imgURL={imgURL}
         headline={headline}
         productName={productName}
@@ -51,13 +53,23 @@ export default class App extends Component {
     )
   }
 
+  getData(id) {
+    return this.state.teaserData.find(card => card.id === id)
+  }
+
   render() {
     return (
       <Router>
         <Wrapper>
           <Header text="STEMfluence" />
           <Route path="/" exact render={() => this.createCards()} />
-          <Route path="/application" exact render={() => <ApplicationForm />} />
+          <Route
+            path="/application/:id"
+            exact
+            render={({ match }) => (
+              <ApplicationForm data={this.getData(match.params.id)} />
+            )}
+          />
         </Wrapper>
       </Router>
     )
