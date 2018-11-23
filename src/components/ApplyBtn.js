@@ -46,8 +46,7 @@ export default class ApplyBtn extends React.Component {
   render() {
     return (
       <Wrapper>
-        {/* <Link to="/application">{this.props.text}</Link> */}
-        {this.props.text}
+        <Link to="/application">{this.props.text}</Link>
       </Wrapper>
     )
   }

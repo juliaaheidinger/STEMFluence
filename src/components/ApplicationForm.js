@@ -130,14 +130,14 @@ export default class ApplicationForm extends React.Component {
             how much do you want to get paid for this campaign (in Euro)?
             <input placeholder="Your Fee" type="number" tabindex="9" required />
           </label>
-          <div class="checkbox">
+          <div className="checkbox">
             <input
               type="checkbox"
               value="1"
               name="campaigns_application[accepted_terms]"
               id="campaigns_application_accepted_terms"
             />
-            <label class="AGB-label">
+            <label className="AGB-label">
               Die <a href="https://www.google.com">Influencer-AGB</a> und
               <a href="https://www.google.com">Datenschutzerklärung</a> habe ich
               zur Kenntnis genommen und bin mit deren Geltung einverstanden. Ich

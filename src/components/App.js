@@ -53,23 +53,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <Wrapper>
-        <Header text="STEMfluence" />
-        {this.createCards()}
-      </Wrapper>
-      // <Router>
-      //   <Wrapper>
-      //     <Header text="STEMfluence" />
-      //     <Route
-      //       path="/"
-      //       exact
-      //       render={() => {
-      //         this.createCards()
-      //       }}
-      //     />
-      //     <Route path="/application" exact render={() => <ApplicationForm />} />
-      //   </Wrapper>
-      // </Router>
+      <Router>
+        <Wrapper>
+          <Header text="STEMfluence" />
+          <Route path="/" exact render={() => this.createCards()} />
+          <Route path="/application" exact render={() => <ApplicationForm />} />
+        </Wrapper>
+      </Router>
     )
     // <Router>
     //   <Wrapper>
