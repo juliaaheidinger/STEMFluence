@@ -5,6 +5,8 @@ import InstagramIcon from '../images/instagram_icon.png'
 import youtubeIcon from '../images/youtube_icon.png'
 import arrowDown from '../images/arrow-down.png'
 import CampaignDetails from './CampaignDetails'
+import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled.section`
   position: relative;
@@ -81,6 +83,24 @@ const ToggleBtn = styled.div`
 `
 
 export default class Card extends React.Component {
+  static propTypes = {
+    imgURL: PropTypes.string,
+    headline: PropTypes.string,
+    productName: PropTypes.string,
+    campaignStatus: PropTypes.oneOf([
+      'Application Phase',
+      'Posting Phase',
+      'Completed'
+    ]),
+    hasTwitter: PropTypes.bool,
+    hasInstagram: PropTypes.bool,
+    hasYoutube: PropTypes.bool
+  }
+
+  static defaultProps = {
+    campaignStatus: 'Application Phase'
+  }
+
   state = {
     showDetails: false
   }
@@ -100,8 +120,10 @@ export default class Card extends React.Component {
       hasTwitter,
       hasInstagram,
       hasYoutube,
+      id,
       rest
     } = this.props
+
     const {
       productDescription,
       postingPeriod,
@@ -110,9 +132,12 @@ export default class Card extends React.Component {
       tags,
       hashtags
     } = rest
+
     return (
       <Wrapper>
-        <img src={imgURL} alt="" />
+        <Link to={`/application/${id}`}>
+          <img src={imgURL} alt="" />
+        </Link>
         <CampaignInfo>
           <div>
             <h2>{headline}</h2>
@@ -127,7 +152,8 @@ export default class Card extends React.Component {
             </SocialIcons>
           </StatusAndSocial>
           <CampaignDetails
-            showMe={this.state.showDetails}
+            id={id}
+            showDetails={this.state.showDetails}
             productDescription={productDescription}
             postingPeriod={postingPeriod}
             amountPosts={amountPosts}

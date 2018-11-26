@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-//import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import campaignData from '../data/campaignData.json'
 import uid from 'uid'
+import ApplicationForm from './ApplicationForm'
 
 const Wrapper = styled.div`
   display: grid;
@@ -16,10 +17,10 @@ const Wrapper = styled.div`
 
 export default class App extends Component {
   state = {
-    teaserData: campaignData
+    teaserData: campaignData.map(d => ({ ...d, id: uid() }))
   }
 
-  createCard() {
+  createCards() {
     return this.state.teaserData.map(this.renderSingleCard)
   }
 
@@ -32,12 +33,14 @@ export default class App extends Component {
       hasTwitter,
       hasInstagram,
       hasYoutube,
+      id,
       ...rest
     } = teaserInfo
 
     return (
       <Card
-        key={uid()}
+        key={id}
+        id={id}
         imgURL={imgURL}
         headline={headline}
         productName={productName}
@@ -50,12 +53,25 @@ export default class App extends Component {
     )
   }
 
+  getData(id) {
+    return this.state.teaserData.find(card => card.id === id)
+  }
+
   render() {
     return (
-      <Wrapper>
-        <Header text="STEMfluence" />
-        {this.createCard()}
-      </Wrapper>
+      <Router>
+        <Wrapper>
+          <Header text="STEMfluence" />
+          <Route path="/" exact render={() => this.createCards()} />
+          <Route
+            path="/application/:id"
+            exact
+            render={({ match }) => (
+              <ApplicationForm data={this.getData(match.params.id)} />
+            )}
+          />
+        </Wrapper>
+      </Router>
     )
     // <Router>
     //   <Wrapper>
