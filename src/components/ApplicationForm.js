@@ -83,7 +83,7 @@ export default class ApplicationForm extends React.Component {
     return (
       <Wrapper>
         <form id="contact" action="" method="post">
-          <h2>Campaign Application for: {data.headline}</h2>
+          <h2>Application for: {data.headline}</h2>
           <h3>Fill in the form to apply bindingly for this paid Campaign</h3>
           <input
             placeholder="Your name"

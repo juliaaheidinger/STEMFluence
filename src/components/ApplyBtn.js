@@ -43,8 +43,12 @@ const Wrapper = styled.div`
   }
 
   .link {
-    color: black;
+    color: #000;
     text-decoration: none;
+
+    &:hover {
+      color: #fff;
+    }
   }
 `
 
