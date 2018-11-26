@@ -6,7 +6,6 @@ import youtubeIcon from '../images/youtube_icon.png'
 import arrowDown from '../images/arrow-down.png'
 import CampaignDetails from './CampaignDetails'
 import PropTypes from 'prop-types'
-import { Link } from 'react-router-dom'
 
 const Wrapper = styled.section`
   position: relative;
@@ -135,9 +134,7 @@ export default class Card extends React.Component {
 
     return (
       <Wrapper>
-        <Link to={`/application/${id}`}>
-          <img src={imgURL} alt="" />
-        </Link>
+        <img src={imgURL} alt="" />
         <CampaignInfo>
           <div>
             <h2>{headline}</h2>
