@@ -5,6 +5,7 @@ import styled from 'styled-components'
 // import youtubeIcon from '../../public/images/youtube_icon.png'
 // import arrowDown from '../../public/images/arrow-down.png'
 import CampaignDetails from './CampaignDetails'
+import Bookmark from './Bookmark'
 import PropTypes from 'prop-types'
 
 const Wrapper = styled.section`
@@ -20,17 +21,6 @@ const Wrapper = styled.section`
     height: 100px;
     object-fit: cover;
     border-radius: 4px 4px 0 0;
-  }
-`
-
-const Bookmark = styled.div`
-  position: absolute;
-  top: -26px;
-  right: 3%;
-  img {
-    height: 31px;
-    width: 26px;
-    object-fit: cover;
   }
 `
 
@@ -130,6 +120,14 @@ export default class Card extends React.Component {
     })
   }
 
+  chooseBookmarkImage = () => {
+    return this.state.isBookmarked ? (
+      <img src="images/bookmark-filled.svg" alt="bookmark filled" />
+    ) : (
+      <img src="images/bookmark-empty.svg" alt="bookmark empty" />
+    )
+  }
+
   render() {
     const {
       imgURL,
@@ -156,13 +154,10 @@ export default class Card extends React.Component {
       <Wrapper>
         <img src={imgURL} alt="" />
         <CampaignInfo>
-          <Bookmark onClick={this.toggleBookmark}>
-            {this.state.isBookmarked ? (
-              <img src="images/bookmark-filled.svg" alt="bookmark filled" />
-            ) : (
-              <img src="images/bookmark-empty.svg" alt="bookmark empty" />
-            )}
-          </Bookmark>
+          <Bookmark
+            onClick={this.toggleBookmark}
+            img={this.chooseBookmarkImage()}
+          />
           <div>
             <h2>{headline}</h2>
             <p>{productName}</p>
