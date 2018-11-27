@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import twitterIcon from '../images/twitter_icon.png'
-import InstagramIcon from '../images/instagram_icon.png'
-import youtubeIcon from '../images/youtube_icon.png'
-import arrowDown from '../images/arrow-down.png'
+// import twitterIcon from '../../public/images/twitter_icon.png'
+// import InstagramIcon from '../../public/images/instagram_icon.png'
+// import youtubeIcon from '../../public/images/youtube_icon.png'
+// import arrowDown from '../../public/images/arrow-down.png'
 import CampaignDetails from './CampaignDetails'
 import PropTypes from 'prop-types'
 
@@ -22,6 +22,18 @@ const Wrapper = styled.section`
     border-radius: 4px 4px 0 0;
   }
 `
+
+const Bookmark = styled.div`
+  position: absolute;
+  top: -26px;
+  right: 3%;
+  img {
+    height: 31px;
+    width: 26px;
+    object-fit: cover;
+  }
+`
+
 const CampaignInfo = styled.div`
   position: relative;
   padding: 0 15px 30px;
@@ -56,6 +68,7 @@ const SocialIcons = styled.div`
     object-fit: cover;
   }
 `
+
 const ToggleBtn = styled.div`
   position: absolute;
   width: 30px;
@@ -101,12 +114,19 @@ export default class Card extends React.Component {
   }
 
   state = {
-    showDetails: false
+    showDetails: false,
+    isBookmarked: false
   }
 
   toggleDetails = () => {
     this.setState({
       showDetails: !this.state.showDetails
+    })
+  }
+
+  toggleBookmark = () => {
+    this.setState({
+      isBookmarked: !this.state.isBookmarked
     })
   }
 
@@ -136,6 +156,13 @@ export default class Card extends React.Component {
       <Wrapper>
         <img src={imgURL} alt="" />
         <CampaignInfo>
+          <Bookmark onClick={this.toggleBookmark}>
+            {this.state.isBookmarked ? (
+              <img src="images/bookmark-filled.svg" alt="bookmark filled" />
+            ) : (
+              <img src="images/bookmark-empty.svg" alt="bookmark empty" />
+            )}
+          </Bookmark>
           <div>
             <h2>{headline}</h2>
             <p>{productName}</p>
@@ -143,9 +170,15 @@ export default class Card extends React.Component {
           <StatusAndSocial>
             <p>Status: {campaignStatus}</p>
             <SocialIcons>
-              {hasTwitter && <img src={twitterIcon} alt="Twitter" />}
-              {hasInstagram && <img src={InstagramIcon} alt="Instagram" />}
-              {hasYoutube && <img src={youtubeIcon} alt="Youtube" />}
+              {hasTwitter && (
+                <img src="images/twitter_icon.png" alt="Twitter" />
+              )}
+              {hasInstagram && (
+                <img src="images/instagram_icon.png" alt="Instagram" />
+              )}
+              {hasYoutube && (
+                <img src="images/youtube_icon.png" alt="Youtube" />
+              )}
             </SocialIcons>
           </StatusAndSocial>
           <CampaignDetails
@@ -161,7 +194,7 @@ export default class Card extends React.Component {
         </CampaignInfo>
         <ToggleBtn onClick={this.toggleDetails}>
           <img
-            src={arrowDown}
+            src="images/arrow-down.png"
             alt="arrow-down"
             className={this.state.showDetails ? 'upside-down' : null}
           />
