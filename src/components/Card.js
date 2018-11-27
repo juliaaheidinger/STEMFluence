@@ -105,7 +105,26 @@ export default class Card extends React.Component {
 
   state = {
     showDetails: false,
-    isBookmarked: false
+    isBookmarked: this.loadBookmark(),
+    cardID: this.loadBookmark()
+  }
+
+  saveBookmark() {
+    localStorage.setItem(
+      ['isBookmarked-' + this.props.id],
+      JSON.stringify(this.state.isBookmarked)
+    )
+  }
+
+  loadBookmark() {
+    try {
+      return (
+        JSON.parse(localStorage.getItem('isBookmarked-' + this.props.id)) ||
+        false
+      )
+    } catch (err) {
+      return console.log(err) && false
+    }
   }
 
   toggleDetails = () => {
@@ -129,6 +148,7 @@ export default class Card extends React.Component {
   }
 
   render() {
+    this.saveBookmark()
     const {
       imgURL,
       headline,
