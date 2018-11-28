@@ -13,7 +13,6 @@ import PropTypes from 'prop-types'
 const Wrapper = styled.section`
   position: relative;
   width: 80%;
-  min-height: 150px;
   background: #fff;
   box-shadow: 0 8px 16px rgba(0, 40, 100, 0.4);
   border-radius: 4px;
