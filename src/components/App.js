@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Header from '../components/Header'
 import Card from '../components/Card'
 import campaignData from '../data/campaignData.json'
-import uid from 'uid'
 import ApplicationForm from './ApplicationForm'
 
 const Wrapper = styled.div`

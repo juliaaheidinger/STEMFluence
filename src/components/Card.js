@@ -1,5 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
+
+//Hierzu Jerry fragen, ob es noch einen besseren Weg gibt, um Bilder zu importieren
 // import twitterIcon from '../../public/images/twitter_icon.png'
 // import InstagramIcon from '../../public/images/instagram_icon.png'
 // import youtubeIcon from '../../public/images/youtube_icon.png'
@@ -111,7 +113,7 @@ export default class Card extends React.Component {
 
   saveBookmarkedCards() {
     localStorage.setItem(
-      ['isBookmarked-' + this.props.id],
+      [this.props.id + '-isBookmarked'],
       JSON.stringify(this.state.isBookmarked)
     )
   }
@@ -119,7 +121,7 @@ export default class Card extends React.Component {
   loadBookmarkedCards() {
     try {
       return (
-        JSON.parse(localStorage.getItem('isBookmarked-' + this.props.id)) ||
+        JSON.parse(localStorage.getItem(this.props.id + '-isBookmarked')) ||
         false
       )
     } catch (err) {
@@ -129,18 +131,16 @@ export default class Card extends React.Component {
 
   saveCardID() {
     localStorage.setItem(
-      ['cardID-' + this.props.id],
+      [this.props.headline + '-cardID'],
       JSON.stringify(this.props.id)
     )
   }
 
   loadCardID() {
     try {
-      return (
-        JSON.parse(localStorage.getItem('cardID-' + this.props.id)) || false
-      )
+      return JSON.parse(localStorage.getItem(this.props.headline + '-cardID'))
     } catch (err) {
-      return console.log(err) && false
+      return console.log(err)
     }
   }
 

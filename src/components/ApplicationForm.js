@@ -85,52 +85,27 @@ export default class ApplicationForm extends React.Component {
         <form id="contact" action="" method="post">
           <h2>Application for: {data.headline}</h2>
           <h3>Fill in the form to apply bindingly for this paid Campaign</h3>
-          <input
-            placeholder="Your name"
-            type="text"
-            tabindex="1"
-            required
-            autofocus
-          />
-          <input placeholder="Your Address" type="text" tabindex="2" required />
-          <input
-            placeholder="Your Email Address"
-            type="email"
-            tabindex="2"
-            required
-          />
+          <input placeholder="Your name" type="text" required />
+          <input placeholder="Your Address" type="text" required />
+          <input placeholder="Your Email Address" type="email" required />
           <input
             placeholder="Your Social Media Plattform"
             type="text"
-            tabindex="4"
             required
           />
-          <input placeholder="Your Handle" type="text" tabindex="5" required />
-          <input
-            placeholder="Number of Followers"
-            type="number"
-            tabindex="6"
-            required
-          />
+          <input placeholder="Your Handle" type="text" required />
+          <input placeholder="Number of Followers" type="number" required />
           <label>
             What connects you to the Product/Service?
-            <textarea
-              placeholder="Type your Message Here...."
-              tabindex="7"
-              required
-            />
+            <textarea placeholder="Type your Message Here...." required />
           </label>
           <label>
             What's your post idea and how do you realize the product placement?
-            <textarea
-              placeholder="Type your Idea Here..."
-              tabindex="8"
-              required
-            />
+            <textarea placeholder="Type your Idea Here..." required />
           </label>
           <label>
             how much do you want to get paid for this campaign (in Euro)?
-            <input placeholder="Your Fee" type="number" tabindex="9" required />
+            <input placeholder="Your Fee" type="number" required />
           </label>
           <div className="checkbox">
             <input

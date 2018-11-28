@@ -55,7 +55,7 @@ const Wrapper = styled.div`
 export default class ApplyBtn extends React.Component {
   static propTypes = {
     text: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired
+    id: PropTypes.any.isRequired
   }
 
   static defaultProps = {
