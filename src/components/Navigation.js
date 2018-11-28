@@ -14,15 +14,18 @@ const Wrapper = styled.nav`
     text-decoration: none;
     color: black;
     width: 100%;
-    background: #efefef;
+    background: black;
 
     &:first-child {
       border-right: 1px solid white;
     }
 
     &.active {
-      background: deeppink;
+      background: #545252;
       color: white;
+    }
+    img {
+      height: 20px;
     }
   }
 `
@@ -30,10 +33,10 @@ const Wrapper = styled.nav`
 export default props => (
   <Wrapper data-cy="Navigation">
     <NavLink exact activeClassName="active" to="/">
-      Home
+      <img src="images/house-footer-icon.svg" alt="house-icon" />
     </NavLink>
     <NavLink activeClassName="active" to="/favorites">
-      Favorites
+      <img src="images/bookmark-footer-icon.svg" alt="house-icon" />
     </NavLink>
   </Wrapper>
 )
