@@ -17,27 +17,11 @@ const Wrapper = styled.div`
 
 export default class App extends Component {
   state = {
-    teaserData: campaignData.map(d => ({ ...d, id: this.getCardID() }))
-  }
-
-  saveCardID() {
-    localStorage.setItem('cardID', JSON.stringify(this.props.id))
-  }
-
-  loadCardID() {
-    try {
-      return JSON.parse(localStorage.getItem('cardID')) || false
-    } catch (err) {
-      return console.log(err) && false
-    }
+    teaserData: campaignData
   }
 
   createCards() {
     return this.state.teaserData.map(this.renderSingleCard)
-  }
-
-  getCardID() {
-    return this.loadCardID() || uid()
   }
 
   renderSingleCard = teaserInfo => {
