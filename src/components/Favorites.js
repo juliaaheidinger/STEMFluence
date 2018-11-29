@@ -4,7 +4,7 @@ import styled from 'styled-components'
 const Wrapper = styled.div`
   display: grid;
   grid-template-columns: auto auto;
-  grid-auto-flow: center;
+  grid-gap: 10px;
   padding: 0 30px;
 `
 

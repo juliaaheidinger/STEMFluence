@@ -6,6 +6,7 @@ import Home from '../components/Home'
 import Favorites from '../components/Favorites'
 import ApplicationForm from './ApplicationForm'
 import Navigation from './Navigation'
+import campaignData from '../data/campaignData.json'
 
 const Wrapper = styled.div`
   display: grid;
@@ -14,12 +15,47 @@ const Wrapper = styled.div`
 `
 
 export default class App extends Component {
+  state = {
+    teaserData: campaignData
+  }
+
+  toggleBookmark = id => {
+    const { teaserData } = this.state
+    const cardIndex = teaserData.findIndex(card => card.id === id)
+    const startOfArray = teaserData.slice(0, cardIndex)
+    const endOfArray = teaserData.slice(cardIndex + 1)
+    const changedTeaser = teaserData[cardIndex]
+    this.setState({
+      teaserData: [
+        ...startOfArray,
+        {
+          ...changedTeaser,
+          isBookmarked: !changedTeaser.isBookmarked
+        },
+        ...endOfArray
+      ]
+    })
+  }
+
+  getData(id) {
+    return this.state.teaserData.find(card => card.id === id)
+  }
+
   render() {
     return (
       <Router>
         <Wrapper>
           <Header text="STEMfluence" />
-          <Route path="/" exact render={() => <Home />} />
+          <Route
+            path="/"
+            exact
+            render={() => (
+              <Home
+                toggleBookmark={id => this.toggleBookmark(id)}
+                teaserData={this.state.teaserData}
+              />
+            )}
+          />
           <Route
             path="/application/:id"
             exact

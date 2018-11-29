@@ -149,11 +149,11 @@ export default class Card extends React.Component {
     })
   }
 
-  toggleBookmark = () => {
-    this.setState({
-      isBookmarked: !this.state.isBookmarked
-    })
-  }
+  // toggleBookmark = () => {
+  //   this.setState({
+  //     isBookmarked: !this.state.isBookmarked
+  //   })
+  // }
 
   chooseBookmarkImage = () => {
     return this.state.isBookmarked ? (
@@ -192,7 +192,7 @@ export default class Card extends React.Component {
         <img src={imgURL} alt="" />
         <CampaignInfo>
           <Bookmark
-            onClick={this.toggleBookmark}
+            onClick={id => this.props.toggleBookmark(id)}
             img={this.chooseBookmarkImage()}
           />
           <div>

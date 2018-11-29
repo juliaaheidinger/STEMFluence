@@ -13,7 +13,8 @@
     "amountPosts": 1,
     "amountStories": 2,
     "tags": ["@neuefische", "@coyo"],
-    "hashtags": ["#neuefische", "#bootcamp", "ad"]
+    "hashtags": ["#neuefische", "#bootcamp", "ad"],
+    "isBookmarked": false
   },
   {
     "id": "ehqvn1c",
@@ -29,7 +30,8 @@
     "amountPosts": 2,
     "amountStories": 5,
     "tags": ["@google"],
-    "hashtags": ["#growWithGoogle", "#zukunftswerkstatt", "#ad"]
+    "hashtags": ["#growWithGoogle", "#zukunftswerkstatt", "#ad"],
+    "isBookmarked": false
   },
   {
     "id": "k00v3xn",
@@ -45,6 +47,7 @@
     "amountPosts": 3,
     "amountStories": 6,
     "tags": ["@amazonlaunchpad"],
-    "hashtags": ["#amazon", "#wieNieZuvor", "#ad"]
+    "hashtags": ["#amazon", "#wieNieZuvor", "#ad"],
+    "isBookmarked": false
   }
 ]

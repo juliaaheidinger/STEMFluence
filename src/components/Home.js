@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
-import campaignData from '../data/campaignData.json'
+// import campaignData from '../data/campaignData.json'
 
 const Wrapper = styled.div`
   display: grid;
@@ -11,13 +11,13 @@ const Wrapper = styled.div`
   overflow-y: scroll;
 `
 
-export default class App extends Component {
-  state = {
-    teaserData: campaignData
-  }
+export default class Home extends Component {
+  // state = {
+  //   teaserData: campaignData
+  // }
 
   createCards() {
-    return this.state.teaserData.map(this.renderSingleCard)
+    return this.props.teaserData.map(this.renderSingleCard)
   }
 
   renderSingleCard = teaserInfo => {
@@ -45,12 +45,9 @@ export default class App extends Component {
         hasInstagram={hasInstagram}
         hasYoutube={hasYoutube}
         rest={rest}
+        toogleBookmark={id => this.props.toggleBookmark(id)}
       />
     )
-  }
-
-  getData(id) {
-    return this.state.teaserData.find(card => card.id === id)
   }
 
   render() {
