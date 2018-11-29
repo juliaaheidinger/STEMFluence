@@ -12,10 +12,6 @@ const Wrapper = styled.div`
 `
 
 export default class Home extends Component {
-  // state = {
-  //   teaserData: campaignData
-  // }
-
   createCards() {
     return this.props.teaserData.map(this.renderSingleCard)
   }
@@ -45,7 +41,7 @@ export default class Home extends Component {
         hasInstagram={hasInstagram}
         hasYoutube={hasYoutube}
         rest={rest}
-        toogleBookmark={id => this.props.toggleBookmark(id)}
+        toggleBookmark={() => this.props.toggleBookmark(id)}
       />
     )
   }

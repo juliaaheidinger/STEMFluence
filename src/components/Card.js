@@ -106,27 +106,27 @@ export default class Card extends React.Component {
 
   state = {
     showDetails: false,
-    isBookmarked: this.loadBookmarkedCards(),
+    // isBookmarked: this.loadBookmarkedCards(),
     cardID: this.loadCardID()
   }
 
-  saveBookmarkedCards() {
-    localStorage.setItem(
-      [this.props.id + '-isBookmarked'],
-      JSON.stringify(this.state.isBookmarked)
-    )
-  }
+  // saveBookmarkedCards() {
+  //   localStorage.setItem(
+  //     [this.props.id + '-isBookmarked'],
+  //     JSON.stringify(this.state.isBookmarked)
+  //   )
+  // }
 
-  loadBookmarkedCards() {
-    try {
-      return (
-        JSON.parse(localStorage.getItem(this.props.id + '-isBookmarked')) ||
-        false
-      )
-    } catch (err) {
-      return console.log(err) && false
-    }
-  }
+  // loadBookmarkedCards() {
+  //   try {
+  //     return (
+  //       JSON.parse(localStorage.getItem(this.props.id + '-isBookmarked')) ||
+  //       false
+  //     )
+  //   } catch (err) {
+  //     return console.log(err) && false
+  //   }
+  // }
 
   saveCardID() {
     localStorage.setItem(
@@ -164,7 +164,7 @@ export default class Card extends React.Component {
   }
 
   render() {
-    this.saveBookmarkedCards()
+    // this.saveBookmarkedCards()
     this.saveCardID()
     const {
       imgURL,
@@ -192,7 +192,7 @@ export default class Card extends React.Component {
         <img src={imgURL} alt="" />
         <CampaignInfo>
           <Bookmark
-            onClick={id => this.props.toggleBookmark(id)}
+            toggleBookmark={this.props.toggleBookmark}
             img={this.chooseBookmarkImage()}
           />
           <div>

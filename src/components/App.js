@@ -19,18 +19,31 @@ export default class App extends Component {
     teaserData: campaignData
   }
 
+  saveTeaserData() {
+    localStorage.setItem(['teaserData'], JSON.stringify(this.state.teaserData))
+  }
+
+  loadBookmarkedCards() {
+    try {
+      return JSON.parse(localStorage.getItem('teaserData'))
+    } catch (err) {
+      return console.log(err)
+    }
+  }
+
   toggleBookmark = id => {
+    console.log('it works', id)
     const { teaserData } = this.state
     const cardIndex = teaserData.findIndex(card => card.id === id)
     const startOfArray = teaserData.slice(0, cardIndex)
     const endOfArray = teaserData.slice(cardIndex + 1)
-    const changedTeaser = teaserData[cardIndex]
+    const changedData = teaserData[cardIndex]
     this.setState({
       teaserData: [
         ...startOfArray,
         {
-          ...changedTeaser,
-          isBookmarked: !changedTeaser.isBookmarked
+          ...changedData,
+          isBookmarked: !changedData.isBookmarked
         },
         ...endOfArray
       ]
@@ -42,6 +55,7 @@ export default class App extends Component {
   }
 
   render() {
+    this.saveTeaserData()
     return (
       <Router>
         <Wrapper>

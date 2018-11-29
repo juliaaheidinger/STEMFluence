@@ -14,6 +14,8 @@ const Wrapper = styled.div`
 
 export default class ApplyBtn extends React.Component {
   render() {
-    return <Wrapper onClick={this.props.onClick}>{this.props.img}</Wrapper>
+    return (
+      <Wrapper onClick={this.props.toggleBookmark}>{this.props.img}</Wrapper>
+    )
   }
 }
