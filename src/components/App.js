@@ -84,7 +84,18 @@ export default class App extends Component {
               <ApplicationForm data={this.getData(match.params.id)} />
             )}
           />
-          <Route path="/favorites" exact render={() => <Favorites />} />
+          <Route
+            path="/favorites"
+            exact
+            render={() => (
+              <Favorites
+                teaserData={this.state.teaserData.filter(
+                  card => card.isBookmarked
+                )}
+                toggleBookmark={id => this.toggleBookmark(id)}
+              />
+            )}
+          />
           <Navigation />
         </Wrapper>
       </Router>
