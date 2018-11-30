@@ -106,27 +106,8 @@ export default class Card extends React.Component {
 
   state = {
     showDetails: false,
-    // isBookmarked: this.loadBookmarkedCards(),
     cardID: this.loadCardID()
   }
-
-  // saveBookmarkedCards() {
-  //   localStorage.setItem(
-  //     [this.props.id + '-isBookmarked'],
-  //     JSON.stringify(this.state.isBookmarked)
-  //   )
-  // }
-
-  // loadBookmarkedCards() {
-  //   try {
-  //     return (
-  //       JSON.parse(localStorage.getItem(this.props.id + '-isBookmarked')) ||
-  //       false
-  //     )
-  //   } catch (err) {
-  //     return console.log(err) && false
-  //   }
-  // }
 
   saveCardID() {
     localStorage.setItem(
@@ -149,14 +130,8 @@ export default class Card extends React.Component {
     })
   }
 
-  // toggleBookmark = () => {
-  //   this.setState({
-  //     isBookmarked: !this.state.isBookmarked
-  //   })
-  // }
-
   chooseBookmarkImage = () => {
-    return this.state.isBookmarked ? (
+    return this.props.isBookmarked ? (
       <img src="images/bookmark-filled.svg" alt="bookmark filled" />
     ) : (
       <img src="images/bookmark-empty.svg" alt="bookmark empty" />
@@ -164,7 +139,6 @@ export default class Card extends React.Component {
   }
 
   render() {
-    // this.saveBookmarkedCards()
     this.saveCardID()
     const {
       imgURL,

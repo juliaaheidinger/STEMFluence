@@ -16,14 +16,22 @@ const Wrapper = styled.div`
 
 export default class App extends Component {
   state = {
-    teaserData: campaignData
+    teaserData: this.loadTeaserData() || campaignData
   }
 
-  saveTeaserData() {
-    localStorage.setItem(['teaserData'], JSON.stringify(this.state.teaserData))
+  componentDidUpdate() {
+    this.saveTeaserData()
   }
 
-  loadBookmarkedCards() {
+  componentDidMount() {
+    this.loadTeaserData()
+  }
+
+  saveTeaserData = () => {
+    localStorage.setItem('teaserData', JSON.stringify(this.state.teaserData))
+  }
+
+  loadTeaserData() {
     try {
       return JSON.parse(localStorage.getItem('teaserData'))
     } catch (err) {
@@ -55,7 +63,6 @@ export default class App extends Component {
   }
 
   render() {
-    this.saveTeaserData()
     return (
       <Router>
         <Wrapper>
@@ -82,31 +89,5 @@ export default class App extends Component {
         </Wrapper>
       </Router>
     )
-    // <Router>
-    //   <Wrapper>
-    //     <Route
-    //       exact
-    //       path="/"
-    //       render={() => <Home showDoneTodos={this.state.showDoneTodos} />}
-    //     />
-    //     <Route
-    //       path="/config"
-    //       render={() => (
-    //         <Config
-    //           showDoneTodos={this.state.showDoneTodos}
-    //           onToggle={this.toggleShowDoneTodos}
-    //         />
-    //       )}
-    //     />
-    //     <nav>
-    //       <NavLink exact activeClassName="active" to="/">
-    //         Home
-    //       </NavLink>
-    //       <NavLink activeClassName="active" to="/config">
-    //         Config
-    //       </NavLink>
-    //     </nav>
-    //   </Wrapper>
-    // </Router>
   }
 }

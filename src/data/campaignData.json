@@ -30,7 +30,8 @@
     "amountPosts": 2,
     "amountStories": 5,
     "tags": ["@google"],
-    "hashtags": ["#growWithGoogle", "#zukunftswerkstatt", "#ad"]
+    "hashtags": ["#growWithGoogle", "#zukunftswerkstatt", "#ad"],
+    "isBookmarked": false
   },
   {
     "id": "k00v3xn",
@@ -46,6 +47,7 @@
     "amountPosts": 3,
     "amountStories": 6,
     "tags": ["@amazonlaunchpad"],
-    "hashtags": ["#amazon", "#wieNieZuvor", "#ad"]
+    "hashtags": ["#amazon", "#wieNieZuvor", "#ad"],
+    "isBookmarked": false
   }
 ]

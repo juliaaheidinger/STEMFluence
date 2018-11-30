@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Card from '../components/Card'
-// import campaignData from '../data/campaignData.json'
 
 const Wrapper = styled.div`
   display: grid;
@@ -26,6 +25,7 @@ export default class Home extends Component {
       hasInstagram,
       hasYoutube,
       id,
+      isBookmarked,
       ...rest
     } = teaserInfo
 
@@ -42,37 +42,12 @@ export default class Home extends Component {
         hasYoutube={hasYoutube}
         rest={rest}
         toggleBookmark={() => this.props.toggleBookmark(id)}
+        isBookmarked={isBookmarked}
       />
     )
   }
 
   render() {
     return <Wrapper>{this.createCards()}</Wrapper>
-    // <Router>
-    //   <Wrapper>
-    //     <Route
-    //       exact
-    //       path="/"
-    //       render={() => <Home showDoneTodos={this.state.showDoneTodos} />}
-    //     />
-    //     <Route
-    //       path="/config"
-    //       render={() => (
-    //         <Config
-    //           showDoneTodos={this.state.showDoneTodos}
-    //           onToggle={this.toggleShowDoneTodos}
-    //         />
-    //       )}
-    //     />
-    //     <nav>
-    //       <NavLink exact activeClassName="active" to="/">
-    //         Home
-    //       </NavLink>
-    //       <NavLink activeClassName="active" to="/config">
-    //         Config
-    //       </NavLink>
-    //     </nav>
-    //   </Wrapper>
-    // </Router>
   }
 }

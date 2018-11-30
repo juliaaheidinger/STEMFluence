@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   }
 `
 
-export default class ApplyBtn extends React.Component {
+export default class Bookmark extends React.Component {
   render() {
     return (
       <Wrapper onClick={this.props.toggleBookmark}>{this.props.img}</Wrapper>
