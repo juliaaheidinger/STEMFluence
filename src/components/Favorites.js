@@ -16,6 +16,9 @@ const Wrapper = styled.div`
   grid-auto-flow: center;
   overflow-y: scroll;
 `
+const StylingIfOnlyOneCardOnPage = styled.div`
+  height: 225px;
+`
 
 export default class Favorites extends React.Component {
   createCards() {
@@ -58,7 +61,10 @@ export default class Favorites extends React.Component {
     return (
       <Wrapper>
         {this.props.teaserData.length > 0 ? (
-          this.createCards()
+          <React.Fragment>
+            {this.createCards()}
+            <StylingIfOnlyOneCardOnPage />
+          </React.Fragment>
         ) : (
           <DefaultText>
             Hey there, here you'll see all your bookmarked cards
