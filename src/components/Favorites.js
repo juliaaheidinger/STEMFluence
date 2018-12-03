@@ -67,7 +67,7 @@ export default class Favorites extends React.Component {
           </React.Fragment>
         ) : (
           <DefaultText>
-            Hey there, here you'll see all your bookmarked cards
+            Hey there, here you will see all your bookmarked cards
             <span role="img" aria-label="starseyes">
               🤩
             </span>

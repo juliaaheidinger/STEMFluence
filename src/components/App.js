@@ -23,10 +23,6 @@ export default class App extends Component {
     this.saveTeaserData()
   }
 
-  componentDidMount() {
-    this.loadTeaserData()
-  }
-
   saveTeaserData() {
     localStorage.setItem('teaserData', JSON.stringify(this.state.teaserData))
   }
@@ -35,12 +31,12 @@ export default class App extends Component {
     try {
       return JSON.parse(localStorage.getItem('teaserData'))
     } catch (err) {
+      //ist das return hier notwendig?
       return console.log(err)
     }
   }
 
   toggleBookmark = id => {
-    console.log('it works', id)
     const { teaserData } = this.state
     const cardIndex = teaserData.findIndex(card => card.id === id)
     const startOfArray = teaserData.slice(0, cardIndex)
