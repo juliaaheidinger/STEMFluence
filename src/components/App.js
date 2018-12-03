@@ -27,7 +27,7 @@ export default class App extends Component {
     this.loadTeaserData()
   }
 
-  saveTeaserData = () => {
+  saveTeaserData() {
     localStorage.setItem('teaserData', JSON.stringify(this.state.teaserData))
   }
 
@@ -63,6 +63,7 @@ export default class App extends Component {
   }
 
   render() {
+    console.table(this.state.teaserData)
     return (
       <Router>
         <Wrapper>
