@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
+  /* max-width: 500px; */
   max-width: 500px;
-  width: 100%;
-  margin: 0;
+  margin: 0 auto;
   background: #fff;
   box-shadow: 0 8px 16px rgba(0, 40, 100, 0.4);
   border: px solid black;
