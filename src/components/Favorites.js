@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Card from './Card'
+import FavoriteContainer from './FavoriteContainer'
 
 const DefaultText = styled.div`
   display: grid;
@@ -25,38 +25,9 @@ export default class Favorites extends React.Component {
     return this.props.teaserData.map(this.renderSingleCard)
   }
 
-  renderSingleCard = teaserInfo => {
-    const {
-      imgURL,
-      headline,
-      productName,
-      campaignStatus,
-      hasTwitter,
-      hasInstagram,
-      hasYoutube,
-      id,
-      isBookmarked,
-      ...rest
-    } = teaserInfo
-
-    return (
-      <Card
-        key={id}
-        id={id}
-        imgURL={imgURL}
-        headline={headline}
-        productName={productName}
-        campaignStatus={campaignStatus}
-        hasTwitter={hasTwitter}
-        hasInstagram={hasInstagram}
-        hasYoutube={hasYoutube}
-        rest={rest}
-        toggleBookmark={() => this.props.toggleBookmark(id)}
-        isBookmarked={isBookmarked}
-      />
-    )
+  renderSingleCard = campainData => {
+    return <FavoriteContainer cardObj={campainData} key={campainData.id} />
   }
-
   render() {
     return (
       <Wrapper>

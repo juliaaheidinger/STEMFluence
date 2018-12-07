@@ -64,7 +64,7 @@ export default class ApplyBtn extends React.Component {
 
   render() {
     return (
-      <Wrapper data-cy="ApplyBtn">
+      <Wrapper data-cy="Applybtn">
         <Link className="link" to={`/application/${this.props.id}`}>
           {this.props.text}
         </Link>

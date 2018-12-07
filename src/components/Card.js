@@ -105,24 +105,24 @@ export default class Card extends React.Component {
   }
 
   state = {
-    showDetails: false,
-    cardID: this.loadCardID()
+    showDetails: false
+    //cardID: this.loadCardID()
   }
 
-  saveCardID() {
-    localStorage.setItem(
-      [this.props.headline + '-cardID'],
-      JSON.stringify(this.props.id)
-    )
-  }
+  // saveCardID() {
+  //   localStorage.setItem(
+  //     [this.props.headline + '-cardID'],
+  //     JSON.stringify(this.props.id)
+  //   )
+  // }
 
-  loadCardID() {
-    try {
-      return JSON.parse(localStorage.getItem(this.props.headline + '-cardID'))
-    } catch (err) {
-      return console.log(err)
-    }
-  }
+  // loadCardID() {
+  //   try {
+  //     return JSON.parse(localStorage.getItem(this.props.headline + '-cardID'))
+  //   } catch (err) {
+  //     return console.log(err)
+  //   }
+  // }
 
   toggleDetails = () => {
     this.setState({
@@ -139,7 +139,12 @@ export default class Card extends React.Component {
   }
 
   render() {
-    this.saveCardID()
+    // this.saveCardID()
+
+    // const cardObj = this.props.teaserData.find(
+    //   card => card.id === this.props.id
+    // )
+
     const {
       imgURL,
       headline,
@@ -149,8 +154,10 @@ export default class Card extends React.Component {
       hasInstagram,
       hasYoutube,
       id,
-      rest
-    } = this.props
+      ...rest
+    } = this.props.cardObj
+
+    //console.log(imgURL)
 
     const {
       productDescription,
@@ -162,11 +169,11 @@ export default class Card extends React.Component {
     } = rest
 
     return (
-      <Wrapper>
+      <Wrapper data-cy="Card">
         <img src={imgURL} alt="" />
         <CampaignInfo>
           <Bookmark
-            toggleBookmark={this.props.toggleBookmark}
+            toggleBookmark={() => this.props.toggleBookmark(id)}
             img={this.chooseBookmarkImage()}
           />
           <div>
@@ -198,7 +205,7 @@ export default class Card extends React.Component {
             hashtags={hashtags}
           />
         </CampaignInfo>
-        <ToggleBtn onClick={this.toggleDetails}>
+        <ToggleBtn data-cy="Togglebtn" onClick={this.toggleDetails}>
           <img
             src="images/arrow-down.png"
             alt="arrow-down"
