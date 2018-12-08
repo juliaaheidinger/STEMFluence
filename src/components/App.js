@@ -16,11 +16,24 @@ const Wrapper = styled.div`
 
 export default class App extends Component {
   state = {
-    teaserData: this.loadTeaserData() || campaignData
+    teaserData: this.loadTeaserData() || campaignData,
+    applicationData: this.loadapplicationData() || [],
+    campaign: '',
+    name: '',
+    address: '',
+    email: '',
+    plattform: '',
+    handle: '',
+    followers: '',
+    textConnection: '',
+    textPostIdea: '',
+    fee: '',
+    termsAccepted: false
   }
 
   componentDidUpdate() {
     this.saveTeaserData()
+    this.saveApplicationData()
   }
 
   saveTeaserData() {
@@ -31,7 +44,23 @@ export default class App extends Component {
     try {
       return JSON.parse(localStorage.getItem('teaserData'))
     } catch (err) {
-      //ist das return hier notwendig?
+      return console.log(err)
+    }
+  }
+
+  // ### save applicationData ###
+
+  saveApplicationData() {
+    localStorage.setItem(
+      'applicationData',
+      JSON.stringify(this.state.applicationData)
+    )
+  }
+
+  loadapplicationData() {
+    try {
+      return JSON.parse(localStorage.getItem('applicationData'))
+    } catch (err) {
       return console.log(err)
     }
   }
@@ -58,8 +87,75 @@ export default class App extends Component {
     return this.state.teaserData.find(card => card.id === id)
   }
 
+  resetInputValues = () => {
+    this.setState({
+      campaign: '',
+      name: '',
+      address: '',
+      email: '',
+      plattform: '',
+      handle: '',
+      followers: '',
+      textConnection: '',
+      textPostIdea: '',
+      fee: '',
+      termsAccepted: false
+    })
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+
+  handleCheck = event => {
+    const checkBoxChecked = event.target.checked ? true : false
+
+    this.setState({
+      [event.target.name]: checkBoxChecked
+    })
+  }
+
+  preventDefault = event => event.preventDefault()
+
+  createNewDataSet = () => {
+    const {
+      campaign,
+      name,
+      address,
+      email,
+      plattform,
+      handle,
+      followers,
+      textConnection,
+      textPostIdea,
+      fee,
+      termsAccepted
+    } = this.state
+
+    const newDataSet = {
+      campaign: campaign,
+      name: name,
+      address: address,
+      email: email,
+      plattform: plattform,
+      handle: handle,
+      followers: followers,
+      textConnection: textConnection,
+      textPostIdea: textPostIdea,
+      fee: fee,
+      termsAccepted: termsAccepted
+    }
+
+    this.setState({
+      applicationData: [newDataSet, ...this.state.applicationData]
+    })
+
+    this.resetInputValues()
+  }
+
   render() {
-    console.table(this.state.teaserData)
     return (
       <Router>
         <Wrapper>
@@ -78,7 +174,15 @@ export default class App extends Component {
             path="/application/:id"
             exact
             render={({ match }) => (
-              <ApplicationForm data={this.getData(match.params.id)} />
+              <ApplicationForm
+                displayValueCheckbox={this.state.termsAccepted}
+                resetInputValues={this.resetInputValues}
+                onChange={this.handleChange}
+                onCheck={this.handleCheck}
+                onSubmit={this.createNewDataSet}
+                preventDefault={this.preventDefault}
+                data={this.getData(match.params.id)}
+              />
             )}
           />
           <Route

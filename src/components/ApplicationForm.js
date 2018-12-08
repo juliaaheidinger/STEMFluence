@@ -26,7 +26,7 @@ const Wrapper = styled.div`
     grid-gap: 5px;
   }
 
-  .AGB-label {
+  .Terms-div {
     display: block;
   }
 
@@ -78,44 +78,164 @@ const Wrapper = styled.div`
 `
 
 export default class ApplicationForm extends React.Component {
+  constructor(props) {
+    super(props)
+    this.campaignInputRef = React.createRef()
+    this.nameInputRef = React.createRef()
+    this.addressInputRef = React.createRef()
+    this.emailInputRef = React.createRef()
+    this.plattformInputRef = React.createRef()
+    this.handleInputRef = React.createRef()
+    this.followersInputRef = React.createRef()
+    this.textConnectionInputRef = React.createRef()
+    this.textPostIdeaInputRef = React.createRef()
+    this.feeInputRef = React.createRef()
+  }
+
+  handleSubmit = event => {
+    this.props.preventDefault(event)
+    this.props.onSubmit()
+    this.campaignInputRef.current.value = ''
+    this.nameInputRef.current.value = ''
+    this.addressInputRef.current.value = ''
+    this.emailInputRef.current.value = ''
+    this.plattformInputRef.current.value = ''
+    this.handleInputRef.current.value = ''
+    this.followersInputRef.current.value = ''
+    this.textConnectionInputRef.current.value = ''
+    this.textPostIdeaInputRef.current.value = ''
+    this.feeInputRef.current.value = ''
+  }
+
+  componentDidMount() {
+    this.props.resetInputValues()
+  }
+
   render() {
-    const { data } = this.props
+    const { data, onChange, onCheck, displayValueCheckbox } = this.props
 
     return (
       <Wrapper>
-        <form id="contact" action="" method="post">
+        <form id="contact" onSubmit={this.handleSubmit}>
           <h2>Application for: {data.headline}</h2>
           <h3>Fill in the form to apply bindingly for this paid Campaign</h3>
-          <input placeholder="Your name" type="text" required />
-          <input placeholder="Your Address" type="text" required />
-          <input placeholder="Your Email Address" type="email" required />
-          <input
-            placeholder="Your Social Media Plattform"
-            type="text"
-            required
-          />
-          <input placeholder="Your Handle" type="text" required />
-          <input placeholder="Number of Followers" type="number" required />
+          <label>
+            The Campaign Name
+            <input
+              placeholder={data.headline}
+              type="text"
+              name="campaign"
+              required={true}
+              onChange={onChange}
+              ref={this.campaignInputRef}
+            />
+          </label>
+          <label>
+            Your name
+            <input
+              placeholder="Ada Lovelace"
+              type="text"
+              name="name"
+              required={true}
+              onChange={onChange}
+              ref={this.nameInputRef}
+            />
+          </label>
+          <label>
+            Your Address
+            <input
+              placeholder="main street 123, 20095 Hamburg, Germany"
+              type="text"
+              name="address"
+              onChange={onChange}
+              ref={this.addressInputRef}
+            />
+          </label>
+          <label>
+            Your Email Address
+            <input
+              placeholder="stemfluence@gmail.com"
+              type="email"
+              name="email"
+              required={true}
+              onChange={onChange}
+              ref={this.emailInputRef}
+            />
+          </label>
+          <label>
+            Your Social Media Plattform
+            <input
+              placeholder="Instagram"
+              type="text"
+              name="plattform"
+              required={true}
+              onChange={onChange}
+              ref={this.plattformInputRef}
+            />
+          </label>
+          <label>
+            Your Handle
+            <input
+              placeholder="@stemfluence"
+              type="text"
+              name="handle"
+              required={true}
+              onChange={onChange}
+              ref={this.handleInputRef}
+            />
+          </label>
+          <label>
+            Number of Followers
+            <input
+              placeholder="13.500"
+              type="number"
+              name="followers"
+              required={true}
+              onChange={onChange}
+              ref={this.followersInputRef}
+            />
+          </label>
           <label>
             What connects you to the Product/Service?
-            <textarea placeholder="Type your Message Here...." required />
+            <textarea
+              placeholder="Type your Message Here...."
+              name="textConnection"
+              required={true}
+              onChange={onChange}
+              ref={this.textConnectionInputRef}
+            />
           </label>
           <label>
             What's your post idea and how do you realize the product placement?
-            <textarea placeholder="Type your Idea Here..." required />
+            <textarea
+              placeholder="Type your Idea Here..."
+              name="textPostIdea"
+              required={true}
+              onChange={onChange}
+              ref={this.textPostIdeaInputRef}
+            />
           </label>
           <label>
             how much do you want to get paid for this campaign (in Euro)?
-            <input placeholder="Your Fee" type="number" required />
+            <input
+              placeholder="Your Fee"
+              type="number"
+              name="fee"
+              required={true}
+              onChange={onChange}
+              ref={this.feeInputRef}
+            />
           </label>
-          <div className="checkbox">
+
+          <label className="checkbox">
             <input
               type="checkbox"
-              value="1"
-              name="campaigns_application[accepted_terms]"
-              id="campaigns_application_accepted_terms"
+              name="termsAccepted"
+              required={true}
+              onChange={onCheck}
+              checked={displayValueCheckbox}
             />
-            <label className="AGB-label">
+            <div className="Terms-label">
               I have read the{' '}
               <a href="https://www.google.com">
                 Influencer Terms and Conditions
@@ -123,15 +243,10 @@ export default class ApplicationForm extends React.Component {
               and <a href="https://www.google.com">Privacy Policy</a> and agree
               with their validity. I confirm that all my details in this
               registration are correct.
-            </label>
-          </div>
-          <button
-            name="submit"
-            type="submit"
-            id="contact-submit"
-            data-submit="...Sending"
-          >
-            Submit
+            </div>
+          </label>
+          <button name="submit" type="submit" value="submit">
+            Submit application
           </button>
         </form>
       </Wrapper>
