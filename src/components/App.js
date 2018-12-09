@@ -7,6 +7,12 @@ import Favorites from '../components/Favorites'
 import ApplicationForm from './ApplicationForm'
 import Navigation from './Navigation'
 import campaignData from '../data/campaignData.json'
+import {
+  getApplication,
+  postApplication,
+  deleteApplication,
+  patchApplication
+} from '../services/application'
 
 const Wrapper = styled.div`
   display: grid;
@@ -17,7 +23,7 @@ const Wrapper = styled.div`
 export default class App extends Component {
   state = {
     teaserData: this.loadTeaserData() || campaignData,
-    applicationData: this.loadapplicationData() || [],
+    applicationData: this.loadApplicationData() || [],
     campaign: '',
     name: '',
     address: '',
@@ -57,7 +63,7 @@ export default class App extends Component {
     )
   }
 
-  loadapplicationData() {
+  loadApplicationData() {
     try {
       return JSON.parse(localStorage.getItem('applicationData'))
     } catch (err) {
@@ -148,11 +154,14 @@ export default class App extends Component {
       termsAccepted: termsAccepted
     }
 
-    this.setState({
-      applicationData: [newDataSet, ...this.state.applicationData]
-    })
+    postApplication(newDataSet)
+      .then(newDataSet => {
+        this.setState({
+          applicationData: [newDataSet, ...this.state.applicationData]
+        })
+      })
 
-    this.resetInputValues()
+      .then(this.resetInputValues())
   }
 
   render() {
