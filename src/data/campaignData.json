@@ -1,7 +1,7 @@
 [
   {
     "id": "j4rokp1",
-    "imgURL": "images/stemfluence_campaign_img_1.jpg",
+    "imgURL": "/images/stemfluence_campaign_img_1.jpg",
     "headline": "#BecomeACoder",
     "productName": "Web Development Bootcamp",
     "campaignStatus": "Application Phase",
@@ -18,7 +18,7 @@
   },
   {
     "id": "ehqvn1c",
-    "imgURL": "images/stemfluence_campaign_img_2.jpg",
+    "imgURL": "/images/stemfluence_campaign_img_2.jpg",
     "headline": "#NeverStopLearning",
     "productName": "Google Zukunkftswerkstatt",
     "campaignStatus": "Application Phase",
@@ -35,7 +35,7 @@
   },
   {
     "id": "k00v3xn",
-    "imgURL": "images/stemfluence_campaign_img_3.jpg",
+    "imgURL": "/images/stemfluence_campaign_img_3.jpg",
     "headline": "#WieNieZuvor",
     "productName": "Amazon Launchpad",
     "campaignStatus": "Posting Phase",

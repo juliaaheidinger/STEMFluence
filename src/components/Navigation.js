@@ -33,10 +33,10 @@ const Wrapper = styled.nav`
 export default props => (
   <Wrapper data-cy="Navigation">
     <NavLink exact activeClassName="active" to="/">
-      <img src="images/house-footer-icon.svg" alt="house-icon" />
+      <img src="/images/house-footer-icon.svg" alt="house-icon" />
     </NavLink>
     <NavLink activeClassName="active" to="/favorites">
-      <img src="images/bookmark-footer-icon.svg" alt="house-icon" />
+      <img src="/images/bookmark-footer-icon.svg" alt="house-icon" />
     </NavLink>
   </Wrapper>
 )
