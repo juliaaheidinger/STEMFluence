@@ -8,10 +8,10 @@ import ApplicationForm from './ApplicationForm'
 import Navigation from './Navigation'
 import campaignData from '../data/campaignData.json'
 import {
-  getApplication,
-  postApplication,
-  deleteApplication,
-  patchApplication
+  //getApplication,
+  postApplication
+  //deleteApplication,
+  //patchApplication
 } from '../services/application'
 
 const Wrapper = styled.div`
@@ -53,8 +53,6 @@ export default class App extends Component {
       return console.log(err)
     }
   }
-
-  // ### save applicationData ###
 
   saveApplicationData() {
     localStorage.setItem(

@@ -206,7 +206,7 @@ export default class ApplicationForm extends React.Component {
             />
           </label>
           <label>
-            What's your post idea and how do you realize the product placement?
+            What is your post idea and how do you realize the product placement?
             <textarea
               placeholder="Type your Idea Here..."
               name="textPostIdea"
