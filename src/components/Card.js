@@ -17,6 +17,10 @@ const Wrapper = styled.section`
   box-shadow: 0 8px 16px rgba(0, 40, 100, 0.4);
   border-radius: 4px;
 
+  &:last-child {
+    margin-bottom: 40px;
+  }
+
   img {
     width: 100%;
     height: 100px;
