@@ -13,6 +13,7 @@ import {
   //deleteApplication,
   //patchApplication
 } from '../services/application'
+import SubmitScreen from './SubmitScreen'
 
 const Wrapper = styled.div`
   display: grid;
@@ -157,6 +158,7 @@ export default class App extends Component {
         this.setState({
           applicationData: [newDataSet, ...this.state.applicationData]
         })
+        window.location = '/thankyou'
       })
 
       .then(this.resetInputValues())
@@ -204,6 +206,7 @@ export default class App extends Component {
               />
             )}
           />
+          <Route path="/thankyou" exact render={() => <SubmitScreen />} />
           <Navigation />
         </Wrapper>
       </Router>

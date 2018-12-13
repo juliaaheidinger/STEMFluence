@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+//import { Link } from 'react-router-dom'
 
 const Wrapper = styled.div`
   /* max-width: 500px; */
@@ -187,7 +188,7 @@ export default class ApplicationForm extends React.Component {
           <label>
             Number of Followers
             <input
-              placeholder="13.500"
+              placeholder="13500"
               type="number"
               name="followers"
               required={true}
@@ -248,6 +249,11 @@ export default class ApplicationForm extends React.Component {
           <button name="submit" type="submit" value="submit">
             Submit application
           </button>
+          {/* <Link to="/thankyou">
+            <button name="submit" type="submit" value="submit">
+              Submit application
+            </button>
+          </Link> */}
         </form>
       </Wrapper>
     )
